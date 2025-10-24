@@ -4,253 +4,299 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cronograma de Estudos - TI (RJ)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --yt-dark-bg: #0f0f0f;         /* Fundo principal (quase preto) */
+            --yt-dark-card: #212121;       /* Fundo dos cards (cinza escuro) */
+            --yt-dark-border: #3d3d3d;     /* Bordas e divisórias */
+            --yt-text-primary: #ffffff;    /* Texto principal (branco) */
+            --yt-text-secondary: #aaaaaa; /* Texto secundário (cinza claro) */
+            --yt-accent-red: #FF0000;      /* Vermelho YouTube */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f7f7f7;
-            color: #333;
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: var(--yt-dark-bg);
+            color: var(--yt-text-primary);
+            padding: 20px;
         }
-        h1, h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-            vertical-align: top;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-            font-size: 1.1em;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #ecf0f1;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .subject {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: #2c3e50;
-        }
-        .topic {
-            font-style: italic;
-            color: #555;
-            display: block;
-            margin-top: 5px;
-        }
-        .day {
-            font-weight: bold;
-            font-size: 1.2em;
-            vertical-align: middle;
+
+        .header {
             text-align: center;
-            width: 10%;
+            margin-bottom: 30px;
         }
-        .resources-list li {
-            margin-bottom: 8px;
+
+        h1 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: var(--yt-text-secondary);
+            border-bottom: 1px solid var(--yt-dark-border);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* O Grid de Cards */
+        .schedule-grid {
+            display: grid;
+            /* 1 coluna no celular (padrão) */
+            grid-template-columns: 1fr; 
+            gap: 20px;
+        }
+
+        /* O Card de cada Dia */
+        .day-card {
+            background-color: var(--yt-dark-card);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--yt-dark-border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Título do Card (Dia da Semana) */
+        .day-card h3 {
+            color: var(--yt-accent-red);
+            font-size: 1.4em;
+            font-weight: 700;
+            border-bottom: 1px solid var(--yt-dark-border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Bloco de cada Matéria */
+        .subject-block {
+            margin-bottom: 25px;
+        }
+
+        .subject-block h4 {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: var(--yt-text-primary);
+            margin-bottom: 5px;
+        }
+
+        .subject-block .topic {
+            font-size: 0.95em;
+            color: var(--yt-text-secondary);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        /* Links em formato de "Pílula" */
+        .subject-block .links a {
+            display: inline-block;
+            background-color: #3d3d3d;
+            color: var(--yt-text-primary);
+            padding: 8px 15px;
+            border-radius: 18px; /* Pílula */
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-right: 10px;
+            margin-top: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .subject-block .links a:hover {
+            background-color: #555555;
+        }
+
+        /* Card de "Fase 2" */
+        .info-card {
+            background-color: var(--yt-dark-card);
+            border: 1px dashed var(--yt-accent-red);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .info-card h2 {
+            border: none;
+            margin-top: 0;
+            color: var(--yt-accent-red);
+        }
+        .info-card p, .info-card li {
+            color: var(--yt-text-secondary);
+        }
+        .info-card ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+
+        /* Telas de Tablet (2 colunas) */
+        @media (min-width: 768px) {
+            .schedule-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Telas de Desktop (3 colunas) */
+        @media (min-width: 1024px) {
+            .schedule-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            /* Faz o Sábado ocupar a linha inteira no desktop */
+            .day-card.saturday {
+                grid-column: 1 / -1; 
+            }
+        }
+        
     </style>
 </head>
 <body>
-    <h1>Cronograma de Estudos - Concursos TI Rio de Janeiro</h1>
-    <h2>Fase 1: Pré-Edital (Núcleo Comum: TJ-RJ, Proderj, Degase)</h2>
-    <p>Este cronograma é focado em construir a base. Os links de "Prática" são sugestões de filtros para plataformas de questões. Use a banca <strong>FGV</strong> como referência principal nesta fase.</p>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Dia</th>
-                <th>Matéria e Tópico</th>
-                <th>Recursos de Estudo (Conceitos)</th>
-                <th>Prática (Questões)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="day" rowspan="2">Segunda</td>
-                <td>
-                    <span class="subject">Português (Foco FGV)</span>
-                    <span class="topic">Interpretação e Coesão</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.youtube.com/results?search_query=português+para+fgv+elias+santana" target="_blank">YouTube: Português FGV - Elias Santana</a></li>
-                        <li><a href="https://www.youtube.com/results?search_query=português+para+fgv+adriana+figueiredo" target="_blank">YouTube: Português FGV - Adriana Figueiredo</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+português+fgv+interpretação+de+texto" target="_blank">Qconcursos: Português + FGV + Interpretação</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="subject">Redes de Computadores</span>
-                    <span class="topic">Modelo OSI e Arquitetura TCP/IP</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.youtube.com/results?search_query=modelo+osi+boson+treinamentos" target="_blank">YouTube: Modelo OSI - Boson Treinamentos</a></li>
-                        <li><a href="https://www.youtube.com/results?search_query=protocolo+tcp+ip+redes+para+concursos" target="_blank">YouTube: TCP/IP para Concursos</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+redes+de+computadores+modelo+osi+tcpip" target="_blank">Qconcursos: Redes + OSI + TCP/IP</a></td>
-            </tr>
+    <header class="header">
+        <h1>Cronograma de Estudos</h1>
+        <p>Concursos TI Rio de Janeiro (Foco: TJ-RJ, Proderj, Degase)</p>
+    </header>
 
-            <tr>
-                <td class="day" rowspan="2">Terça</td>
-                <td>
-                    <span class="subject">Direito Administrativo</span>
-                    <span class="topic">Atos Administrativos</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.youtube.com/results?search_query=atos+administrativos+para+concursos+thallius+moraes" target="_blank">YouTube: Atos Administrativos - Thallius Moraes</a></li>
-                        <li><a href="https://www.youtube.com/results?search_query=atos+administrativos+herbert+almeida" target="_blank">YouTube: Atos Administrativos - Herbert Almeida</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+direito+administrativo+atos+administrativos+fgv" target="_blank">Qconcursos: Dir. Administrativo + Atos + FGV</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="subject">Banco de Dados</span>
-                    <span class="topic">Modelagem Relacional e SQL (DML)</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.w3schools.com/sql/sql_select.asp" target="_blank">Site: W3Schools SQL Tutorial (Prático)</a></li>
-                        <li><a href="https://www.youtube.com/results?search_query=curso+de+sql+boson+treinamentos" target="_blank">YouTube: Curso de SQL - Boson Treinamentos</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+banco+de+dados+sql+dml+select" target="_blank">Qconcursos: Banco de Dados + SQL (DML)</a></td>
-            </tr>
+    <h2>Fase 1: Pré-Edital (Núcleo Comum)</h2>
 
-            <tr>
-                <td class="day" rowspan="2">Quarta</td>
-                <td>
-                    <span class="subject">Raciocínio Lógico (RLM)</span>
-                    <span class="topic">Tabela Verdade e Proposições</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.youtube.com/results?search_query=rlm+tabela+verdade+josimar+padilha" target="_blank">YouTube: RLM Tabela Verdade - Josimar Padilha</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+raciocínio+lógico+tabela+verdade+fgv" target="_blank">Qconcursos: RLM + Tabela Verdade + FGV</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="subject">Segurança da Informação</span>
-                    <span class="topic">Princípios (CID) e Criptografia</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.youtube.com/results?search_query=princípios+da+segurança+da+informação+concursos" target="_blank">YouTube: Princípios da Segurança (CID)</a></li>
-                        <li><a href="https://www.youtube.com/results?search_query=criptografia+simétrica+e+assimétrica+concursos" target="_blank">YouTube: Criptografia Simétrica vs. Assimétrica</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+segurança+da+informação+princípios+criptografia" target="_blank">Qconcursos: Segurança + Princípios + Criptografia</a></td>
-            </tr>
+    <div class="schedule-grid">
+        
+        <div class="day-card">
+            <h3>Segunda-feira</h3>
+            <div class="subject-block">
+                <h4>Português (Foco FGV)</h4>
+                <p class="topic">Interpretação e Coesão</p>
+                <div class="links">
+                    <a href="https://www.youtube.com/results?search_query=português+para+fgv+elias+santana" target="_blank">📚 Conceito</a>
+                    <a href="https://www.google.com/search?q=qconcursos+português+fgv+interpretação+de+texto" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+            <div class="subject-block">
+                <h4>Redes de Computadores</h4>
+                <p class="topic">Modelo OSI e Arquitetura TCP/IP</p>
+                <div class="links">
+                    <a href="https://www.youtube.com/results?search_query=modelo+osi+boson+treinamentos" target="_blank">📚 Conceito</a>
+                    <a href="https://www.google.com/search?q=qconcursos+redes+de+computadores+modelo+osi+tcpip" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+        </div>
 
-            <tr>
-                <td class="day" rowspan="2">Quinta</td>
-                <td>
-                    <span class="subject">Direito Constitucional</span>
-                    <span class="topic">Artigo 5º (Direitos Fundamentais)</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank">Site: Leitura do Art. 5º - Planalto</a></li>
-                        <li><a href="https://www.youtube.com/results?search_query=artigo+5+para+concursos+aragonê+fernandes" target="_blank">YouTube: Artigo 5º - Aragonê Fernandes</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+direito+constitucional+artigo+5+fgv" target="_blank">Qconcursos: Dir. Constitucional + Art. 5º + FGV</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="subject">Sistemas Operacionais</span>
-                    <span class="topic">Conceitos e Comandos Linux</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.youtube.com/results?search_query=comandos+linux+para+concursos+boson+treinamentos" target="_blank">YouTube: Comandos Linux - Boson Treinamentos</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+sistemas+operacionais+linux+comandos+básicos" target="_blank">Qconcursos: S.O. + Linux + Comandos</a></td>
-            </tr>
+        <div class="day-card">
+            <h3>Terça-feira</h3>
+            <div class="subject-block">
+                <h4>Direito Administrativo</h4>
+                <p class="topic">Atos Administrativos</p>
+                <div class="links">
+                    <a href="https://www.youtube.com/results?search_query=atos+administrativos+para+concursos+thallius+moraes" target="_blank">📚 Conceito</a>
+                    <a href="https://www.google.com/search?q=qconcursos+direito+administrativo+atos+administrativos+fgv" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+            <div class="subject-block">
+                <h4>Banco de Dados</h4>
+                <p class="topic">Modelagem Relacional e SQL (DML)</p>
+                <div class="links">
+                    <a href="https://www.w3schools.com/sql/sql_select.asp" target="_blank">📚 Conceito (Site)</a>
+                    <a href="https://www.google.com/search?q=qconcursos+banco+de+dados+sql+dml+select" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+        </div>
 
-            <tr>
-                <td class="day" rowspan="2">Sexta</td>
-                <td>
-                    <span class="subject">Governança de TI</span>
-                    <span class="topic">Fundamentos ITIL v4</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.youtube.com/results?search_query=fundamentos+itil+v4+para+concursos" target="_blank">YouTube: Fundamentos ITIL v4 para Concursos</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+governança+de+ti+itil+v4" target="_blank">Qconcursos: Governança de TI + ITIL v4</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="subject">Engenharia de Software</span>
-                    <span class="topic">Metodologias Ágeis e Scrum</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li><a href="https://www.youtube.com/results?search_query=scrum+para+concursos" target="_blank">YouTube: Scrum para Concursos</a></li>
-                        <li><a href="https://www.youtube.com/results?search_query=manifesto+ágil+para+concursos" target="_blank">YouTube: Manifesto Ágil para Concursos</a></li>
-                    </ul>
-                </td>
-                <td><a href="https://www.google.com/search?q=qconcursos+engenharia+de+software+scrum+ágil" target="_blank">Qconcursos: Eng. de Software + Scrum + Ágil</a></td>
-            </tr>
+        <div class="day-card">
+            <h3>Quarta-feira</h3>
+            <div class="subject-block">
+                <h4>Raciocínio Lógico (RLM)</h4>
+                <p class="topic">Tabela Verdade e Proposições</p>
+                <div class="links">
+                    <a href="https://www.youtube.com/results?search_query=rlm+tabela+verdade+josimar+padilha" target="_blank">📚 Conceito</a>
+                    <a href="https://www.google.com/search?q=qconcursos+raciocínio+lógico+tabela+verdade+fgv" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+            <div class="subject-block">
+                <h4>Segurança da Informação</h4>
+                <p class="topic">Princípios (CID) e Criptografia</p>
+                <div class="links">
+                    <a href="https://www.youtube.com/results?search_query=princípios+da+segurança+da+informação+concursos" target="_blank">📚 Conceito</a>
+                    <a href="https://www.google.com/search?q=qconcursos+segurança+da+informação+princípios+criptografia" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+        </div>
 
-            <tr>
-                <td class="day">Sábado</td>
-                <td>
-                    <span class="subject">Simulado e Revisão</span>
-                    <span class="topic">Revisão ativa e correção de erros</span>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li>Criar caderno de questões na plataforma de sua escolha com todas as matérias da semana.</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul class="resources-list">
-                        <li>Resolver 50-70 questões (simulando prova).</li>
-                        <li><strong>Mais importante:</strong> Corrigir 100% das questões, lendo os comentários das que errou.</li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="day-card">
+            <h3>Quinta-feira</h3>
+            <div class="subject-block">
+                <h4>Direito Constitucional</h4>
+                <p class="topic">Artigo 5º (Direitos Fundamentais)</p>
+                <div class="links">
+                    <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank">📚 Conceito (Lei)</a>
+                    <a href="https://www.google.com/search?q=qconcursos+direito+constitucional+artigo+5+fgv" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+            <div class="subject-block">
+                <h4>Sistemas Operacionais</h4>
+                <p class="topic">Conceitos e Comandos Linux</p>
+                <div class="links">
+                    <a href="https://www.youtube.com/results?search_query=comandos+linux+para+concursos+boson+treinamentos" target="_blank">📚 Conceito</a>
+                    <a href="https://www.google.com/search?q=qconcursos+sistemas+operacionais+linux+comandos+básicos" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+        </div>
 
-    <h2>Fase 2: Pós-Edital</h2>
-    <p>Assim que o primeiro edital (seja Proderj, Degase ou TJ-RJ) for publicado, <strong>esta página deve ser adaptada</strong>.</p>
-    <ul>
-        <li><strong>Pause</strong> as matérias que não caíram no edital.</li>
-        <li><strong>Adicione</strong> as matérias específicas (ex: Programação Java para o Proderj, ou Legislação Específica do TJ-RJ).</li>
-        <li><strong>Foque 100%</strong> na banca organizadora do edital publicado.</li>
-    </ul>
+        <div class="day-card">
+            <h3>Sexta-feira</h3>
+            <div class="subject-block">
+                <h4>Governança de TI</h4>
+                <p class="topic">Fundamentos ITIL v4</p>
+                <div class="links">
+                    <a href="https://www.youtube.com/results?search_query=fundamentos+itil+v4+para+concursos" target="_blank">📚 Conceito</a>
+                    <a href="https://www.google.com/search?q=qconcursos+governança+de+ti+itil+v4" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+            <div class="subject-block">
+                <h4>Engenharia de Software</h4>
+                <p class="topic">Metodologias Ágeis e Scrum</p>
+                <div class="links">
+                    <a href="https://www.youtube.com/results?search_query=scrum+para+concursos" target="_blank">📚 Conceito</a>
+                    <a href="https://www.google.com/search?q=qconcursos+engenharia+de+software+scrum+ágil" target="_blank">🔧 Prática</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card saturday">
+            <h3>Sábado</h3>
+            <div class="subject-block">
+                <h4>Simulado e Revisão</h4>
+                <p class="topic">Revisão ativa e correção de erros</p>
+                <div class="links">
+                    <a href="https://www.qconcursos.com/" target="_blank">🚀 Gerar Simulado</a>
+                    <a href="#" target_blank>🧠 Corrigir Erros</a>
+                </div>
+            </div>
+        </div>
+
+    </div> <div class="info-card">
+        <h2>Fase 2: Pós-Edital</h2>
+        <p>Assim que o primeiro edital (seja Proderj, Degase ou TJ-RJ) for publicado, <strong>este cronograma deve ser adaptado</strong>.</p>
+        <ul>
+            <li><strong>Pause</strong> as matérias que não caíram no edital.</li>
+            <li><strong>Adicione</strong> as matérias específicas (ex: Programação Java para o Proderj, ou Legislação Específica do TJ-RJ).</li>
+            <li><strong>Foque 100%</strong> na banca organizadora do edital publicado.</li>
+        </ul>
+    </div>
 
 </body>
 </html>
