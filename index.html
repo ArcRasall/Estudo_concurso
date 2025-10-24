@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma de Estudos - TI (RJ)</title>
+    <title>Sprint Final - Concurso TJ-RJ TI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
             --yt-text-primary: #ffffff;    /* Texto principal (branco) */
             --yt-text-secondary: #aaaaaa; /* Texto secundário (cinza claro) */
             --yt-accent-red: #FF0000;      /* Vermelho YouTube */
+            --yt-accent-blue: #3ea6ff;     /* Azul para links de TI */
         }
 
         * {
@@ -40,6 +41,12 @@
             font-size: 2em;
             font-weight: 700;
             margin-bottom: 10px;
+            color: var(--yt-accent-red);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            color: var(--yt-text-secondary);
         }
 
         h2 {
@@ -76,7 +83,7 @@
 
         /* Título do Card (Dia da Semana) */
         .day-card h3 {
-            color: var(--yt-accent-red);
+            color: var(--yt-text-primary);
             font-size: 1.4em;
             font-weight: 700;
             border-bottom: 1px solid var(--yt-dark-border);
@@ -92,7 +99,7 @@
         .subject-block h4 {
             font-size: 1.2em;
             font-weight: 500;
-            color: var(--yt-text-primary);
+            color: var(--yt-accent-blue); /* Destaque azul para matérias */
             margin-bottom: 5px;
         }
 
@@ -121,8 +128,16 @@
         .subject-block .links a:hover {
             background-color: #555555;
         }
+        
+        .subject-block .links a.portugues {
+            background-color: var(--yt-accent-red);
+        }
+        .subject-block .links a.portugues:hover {
+            background-color: #c00;
+        }
 
-        /* Card de "Fase 2" */
+
+        /* Card de AVISO */
         .info-card {
             background-color: var(--yt-dark-card);
             border: 1px dashed var(--yt-accent-red);
@@ -168,30 +183,35 @@
 <body>
 
     <header class="header">
-        <h1>Cronograma de Estudos</h1>
-        <p>Concursos TI Rio de Janeiro (Foco: TJ-RJ, Proderj, Degase)</p>
+        <h1>Sprint Final: TJ-RJ Analista de TI</h1>
+        <p>Edital Publicado! Foco 100% na prova (01/02/2026)</p>
     </header>
 
-    <h2>Fase 1: Pré-Edital (Núcleo Comum)</h2>
+    <div class="info-card" style="margin-bottom: 20px;">
+        <h2>Atenção: Escolha seu Cargo!</h2>
+        <p>O conteúdo de "TI - Específico" depende do cargo que você escolheu (Analista de Infra, SI, Dados, Sistemas, IA, etc.). Este cronograma é a estrutura, você deve preencher esse bloco com o conteúdo da sua especialidade.</p>
+    </div>
+
+    <h2>Ciclo Pós-Edital (Foco Total FGV)</h2>
 
     <div class="schedule-grid">
         
         <div class="day-card">
             <h3>Segunda-feira</h3>
             <div class="subject-block">
-                <h4>Português (Foco FGV)</h4>
-                <p class="topic">Interpretação e Coesão</p>
+                <h4>Português (FGV)</h4>
+                <p class="topic">Estudo do Tópico + Questões</p>
                 <div class="links">
-                    <a href="https://www.youtube.com/results?search_query=português+para+fgv+elias+santana" target="_blank">📚 Conceito</a>
-                    <a href="https://www.google.com/search?q=qconcursos+português+fgv+interpretação+de+texto" target="_blank">🔧 Prática</a>
+                    <a href="https://www.youtube.com/results?search_query=português+fgv+interpretação+elias+santana" target="_blank" class="portugues">📚 Conceito (Vídeo)</a>
+                    <a href="https://www.google.com/search?q=qconcursos+português+fgv+nível+superior" target="_blank">🔧 Prática</a>
                 </div>
             </div>
             <div class="subject-block">
-                <h4>Redes de Computadores</h4>
-                <p class="topic">Modelo OSI e Arquitetura TCP/IP</p>
+                <h4>TI - Base Comum</h4>
+                <p class="topic">PMBOK 7ª ed., Scrum, Redes, S.O.</p>
                 <div class="links">
-                    <a href="https://www.youtube.com/results?search_query=modelo+osi+boson+treinamentos" target="_blank">📚 Conceito</a>
-                    <a href="https://www.google.com/search?q=qconcursos+redes+de+computadores+modelo+osi+tcpip" target="_blank">🔧 Prática</a>
+                    <a href="https://www.youtube.com/results?search_query=pmbok+7+para+concursos" target="_blank">📚 PMBOK 7</a>
+                    <a href="https://www.google.com/search?q=qconcursos+ti+base+comum+fgv+tjrj" target="_blank">🔧 Prática</a>
                 </div>
             </div>
         </div>
@@ -199,19 +219,19 @@
         <div class="day-card">
             <h3>Terça-feira</h3>
             <div class="subject-block">
-                <h4>Direito Administrativo</h4>
-                <p class="topic">Atos Administrativos</p>
+                <h4>TI - Específico (Seu Cargo)</h4>
+                <p class="topic">Ex: Segurança da Info, ou BD, ou IA...</p>
                 <div class="links">
-                    <a href="https://www.youtube.com/results?search_query=atos+administrativos+para+concursos+thallius+moraes" target="_blank">📚 Conceito</a>
-                    <a href="https://www.google.com/search?q=qconcursos+direito+administrativo+atos+administrativos+fgv" target="_blank">🔧 Prática</a>
+                    <a href="https://www.google.com/search?q=qconcursos+fgv+analista+ti+segurança" target="_blank">🔧 Prática (Ex: SI)</a>
+                    <a href="https://www.google.com/search?q=qconcursos+fgv+analista+ti+sistemas" target="_blank">🔧 Prática (Ex: Sist.)</a>
                 </div>
             </div>
             <div class="subject-block">
-                <h4>Banco de Dados</h4>
-                <p class="topic">Modelagem Relacional e SQL (DML)</p>
+                <h4>Legislação / Ética / PCD</h4>
+                <p class="topic">Leitura da Lei + Questões</p>
                 <div class="links">
-                    <a href="https://www.w3schools.com/sql/sql_select.asp" target="_blank">📚 Conceito (Site)</a>
-                    <a href="https://www.google.com/search?q=qconcursos+banco+de+dados+sql+dml+select" target="_blank">🔧 Prática</a>
+                    <a href="https://www.google.com/search?q=qconcursos+ética+no+serviço+público+fgv" target="_blank">🔧 Ética (FGV)</a>
+                    <a href="https://www.google.com/search?q=qconcursos+lei+13146+fgv" target="_blank">🔧 PCD (FGV)</a>
                 </div>
             </div>
         </div>
@@ -219,19 +239,19 @@
         <div class="day-card">
             <h3>Quarta-feira</h3>
             <div class="subject-block">
-                <h4>Raciocínio Lógico (RLM)</h4>
-                <p class="topic">Tabela Verdade e Proposições</p>
+                <h4>Português (FGV)</h4>
+                <p class="topic">Foco em Provas Anteriores</p>
                 <div class="links">
-                    <a href="https://www.youtube.com/results?search_query=rlm+tabela+verdade+josimar+padilha" target="_blank">📚 Conceito</a>
-                    <a href="https://www.google.com/search?q=qconcursos+raciocínio+lógico+tabela+verdade+fgv" target="_blank">🔧 Prática</a>
+                    <a href="https://www.youtube.com/results?search_query=correção+prova+português+fgv" target="_blank" class="portugues">📚 Correção (Vídeo)</a>
+                    <a href="https://www.google.com/search?q=qconcursos+provas+fgv+analista+português" target="_blank">🔧 Prática (Provas)</a>
                 </div>
             </div>
             <div class="subject-block">
-                <h4>Segurança da Informação</h4>
-                <p class="topic">Princípios (CID) e Criptografia</p>
+                <h4>TI - Base Comum</h4>
+                <p class="topic">Continuação do Edital (Governança, etc)</p>
                 <div class="links">
-                    <a href="https://www.youtube.com/results?search_query=princípios+da+segurança+da+informação+concursos" target="_blank">📚 Conceito</a>
-                    <a href="https://www.google.com/search?q=qconcursos+segurança+da+informação+princípios+criptografia" target="_blank">🔧 Prática</a>
+                    <a href="https://www.youtube.com/results?search_query=scrum+e+kanban+para+concursos" target="_blank">📚 Ágil (Vídeo)</a>
+                    <a href="https://www.google.com/search?q=qconcursos+fgv+ti+governança+pmbok" target="_blank">🔧 Prática</a>
                 </div>
             </div>
         </div>
@@ -239,19 +259,18 @@
         <div class="day-card">
             <h3>Quinta-feira</h3>
             <div class="subject-block">
-                <h4>Direito Constitucional</h4>
-                <p class="topic">Artigo 5º (Direitos Fundamentais)</p>
+                <h4>TI - Específico (Seu Cargo)</h4>
+                <p class="topic">Aprofundamento + Questões</p>
                 <div class="links">
-                    <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank">📚 Conceito (Lei)</a>
-                    <a href="https://www.google.com/search?q=qconcursos+direito+constitucional+artigo+5+fgv" target="_blank">🔧 Prática</a>
+                    <a href="https://www.google.com/search?q=qconcursos+fgv+analista+ti+dados" target="_blank">🔧 Prática (Ex: Dados)</a>
+                    <a href="https://www.google.com/search?q=qconcursos+fgv+analista+ti+infraestrutura" target="_blank">🔧 Prática (Ex: Infra)</a>
                 </div>
             </div>
             <div class="subject-block">
-                <h4>Sistemas Operacionais</h4>
-                <p class="topic">Conceitos e Comandos Linux</p>
+                <h4>Legislação / Ética / PCD</h4>
+                <p class="topic">Revisão + Mais Questões</p>
                 <div class="links">
-                    <a href="https://www.youtube.com/results?search_query=comandos+linux+para+concursos+boson+treinamentos" target="_blank">📚 Conceito</a>
-                    <a href="https://www.google.com/search?q=qconcursos+sistemas+operacionais+linux+comandos+básicos" target="_blank">🔧 Prática</a>
+                    <a href="https://www.google.com/search?q=qconcursos+legislação+especial+tjrj+fgv" target="_blank">🔧 Legislação (FGV)</a>
                 </div>
             </div>
         </div>
@@ -259,44 +278,38 @@
         <div class="day-card">
             <h3>Sexta-feira</h3>
             <div class="subject-block">
-                <h4>Governança de TI</h4>
-                <p class="topic">Fundamentos ITIL v4</p>
+                <h4>Prática Discursiva</h4>
+                <p class="topic">Escrever 1 Redação (Tema de TI)</p>
                 <div class="links">
-                    <a href="https://www.youtube.com/results?search_query=fundamentos+itil+v4+para+concursos" target="_blank">📚 Conceito</a>
-                    <a href="https://www.google.com/search?q=qconcursos+governança+de+ti+itil+v4" target="_blank">🔧 Prática</a>
+                    <a href="https://www.youtube.com/results?search_query=discursiva+ti+fgv+como+fazer" target="_blank">📚 Técnica (Vídeo)</a>
                 </div>
             </div>
             <div class="subject-block">
-                <h4>Engenharia de Software</h4>
-                <p class="topic">Metodologias Ágeis e Scrum</p>
+                <h4>Revisão da Semana</h4>
+                <p class="topic">Revisar pontos fracos e questões erradas</p>
                 <div class="links">
-                    <a href="https://www.youtube.com/results?search_query=scrum+para+concursos" target="_blank">📚 Conceito</a>
-                    <a href="https://www.google.com/search?q=qconcursos+engenharia+de+software+scrum+ágil" target="_blank">🔧 Prática</a>
+                    <a href="#" target_blank>🧠 Revisar Anotações</a>
                 </div>
             </div>
         </div>
 
         <div class="day-card saturday">
-            <h3>Sábado</h3>
+            <h3>Sábado (Dia do Simulado)</h3>
             <div class="subject-block">
-                <h4>Simulado e Revisão</h4>
-                <p class="topic">Revisão ativa e correção de erros</p>
+                <h4>Simulado Cronometrado (5h)</h4>
+                <p class="topic">Pegar prova anterior (Analista TI da FGV) e simular condições reais (70q + Discursiva)</p>
                 <div class="links">
-                    <a href="https://www.qconcursos.com/" target="_blank">🚀 Gerar Simulado</a>
-                    <a href="#" target_blank>🧠 Corrigir Erros</a>
+                    <a href="https://www.google.com/search?q=qconcursos+provas+fgv+analista+ti+download" target="_blank">🚀 Baixar Prova</a>
+                </div>
+            </div>
+            <div class="subject-block">
+                <h4>Correção e Análise (2h)</h4>
+                <p class="topic">Analisar CADA erro. Entender por que errou (matéria, pegadinha, cansaço).</p>
+                <div class="links">
+                    <a href="#" target_blank>📈 Planilhar Erros</a>
                 </div>
             </div>
         </div>
 
-    </div> <div class="info-card">
-        <h2>Fase 2: Pós-Edital</h2>
-        <p>Assim que o primeiro edital (seja Proderj, Degase ou TJ-RJ) for publicado, <strong>este cronograma deve ser adaptado</strong>.</p>
-        <ul>
-            <li><strong>Pause</strong> as matérias que não caíram no edital.</li>
-            <li><strong>Adicione</strong> as matérias específicas (ex: Programação Java para o Proderj, ou Legislação Específica do TJ-RJ).</li>
-            <li><strong>Foque 100%</strong> na banca organizadora do edital publicado.</li>
-        </ul>
-    </div>
-
-</body>
+    </div> </body>
 </html>
